@@ -1,13 +1,8 @@
 import React, { useState, useEffect} from 'react';
-//import { withNamespaces } from 'react-i18next';
-import AppBar from '@material-ui/core/AppBar';
-import Button from '@material-ui/core/Button';
 import axios from 'axios';
-import InfoCard from './components/Cards/InfoCard';
-import { ButtonGroup } from 'react-bootstrap';
 import ReactPaginate from 'react-paginate';
-//import i18n from './i18n';
-
+import AppBar from '@material-ui/core/AppBar';
+import InfoCard from './components/Cards/InfoCard';
 
 
   const App = () => {
@@ -25,6 +20,7 @@ import ReactPaginate from 'react-paginate';
       setPageNumber(selected)
     };
 
+    //Muestro usuarios por página 
     const showUsers = users.slice(pagesVisited, pagesVisited + usersPerPage).map(
       (results, index) => {
         return(
@@ -45,8 +41,10 @@ import ReactPaginate from 'react-paginate';
             key={index}
           />
         )
-      })
+      }
+    )
 
+    //GET API
     const getUsers = () => {
       axios.get('https://randomuser.me/api/?results=500')
       .then((response) => {
@@ -54,11 +52,6 @@ import ReactPaginate from 'react-paginate';
         setUsers(response.data.results)
       })
     }
-
-    /* // Cambio de idioma
-    const changeLanguage = (lng) => {
-      i18n.changeLanguage(lng);
-    } */
 
     useEffect(() => {
       getUsers()
@@ -69,10 +62,6 @@ import ReactPaginate from 'react-paginate';
       <AppBar class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div className="container-fluid">
           <h3 className= "navbar-brand">Intive - Challenge</h3>
-          <ButtonGroup className="d-flex">
-              <Button class="btn btn-secondary btn-sm my-2 my-sm-1" style={{"marginRight" : "5px"}} /* onClick={() => changeLanguage('es')} */>spa</Button>
-            <Button class="btn btn-danger btn-sm my-2 my-sm-1" /* onClick={() => changeLanguage('es')} */>eng</Button>
-          </ButtonGroup>
         </div>
       </AppBar> 
       <div className="container">
