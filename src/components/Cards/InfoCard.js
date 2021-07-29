@@ -21,7 +21,7 @@ const InfoCard = ({
             return (
                 <div className="col-md-3" key={index}>
                     <div className="card border-dark m-3" style={{'height':"21rem"}}>
-                        <div className="card-img-top d-flex justify-content-center align-items-center" style={{'minHeight':"200px", 'maxHeight':"200px"}}>
+                        <div className="card-img-top d-flex justify-content-center align-items-center" style={{"height" : "200px"}}>
                             <img src={image} alt={firstName} className="w-75 h-50"/>
                         </div>
                     <div className="card-body row">
